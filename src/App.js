@@ -11,7 +11,6 @@ const FILTER_MAP = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-
 function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {
@@ -20,9 +19,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-
 function App(props) {
-  
   // Refs
   const listHeadingRef = useRef(null);
 
@@ -92,7 +89,6 @@ function App(props) {
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
   const prevTaskLength = usePrevious(tasks.length);
 
-
   // Effects
   useEffect(() => {
     if (tasks.length - prevTaskLength === -1) {
@@ -105,9 +101,10 @@ function App(props) {
       <h1>TodoMatic</h1>
       <Form addTask={addTask} />
       <div className="filters btn-group stack-exception">{filterList}</div>
-      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>{headingText}</h2>
+      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>
+        {headingText}
+      </h2>
       <ul
-        role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading"
       >
